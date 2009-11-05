@@ -10,7 +10,8 @@
 import time,calendar,re
 
 class DateManip:
-	hour_mod = ( (time.altzone/60) + (time.daylight*60) ) / -60 # allow for gmt offsets and daylight
+	# hour_mod = ( (time.altzone/60) + (time.daylight*60) ) / -60 # allow for gmt offsets and daylight
+	hour_mod = 0
 
 	def __init__(self,init_date=time.time()):
 		tup = time.localtime(init_date)
@@ -75,7 +76,8 @@ class CalcWeek:
 			if days[curr_day.dow()]!=0:
 				break
 			days[curr_day.dow()] = curr_day.secs()
-			curr_day.mod_days(-1)
+      # I want to get today's strips
+			curr_day.mod_days(0)
 		self.days = days
 
 	def map_filter(self,x,y):
